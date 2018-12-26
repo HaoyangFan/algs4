@@ -87,105 +87,6 @@ public class Percolation {
         return row >= 1 && row <= numOfRows && col >= 1 && col <= numOfRows && open[convert2Dto1D(row, col)];
     }
 
-//    private void dfsFill(int row, int col) {
-//        int currIdx = convert2Dto1D(row, col);
-//        // make the current index as connected to the bottom
-//        open[currIdx] = CONNECT_TO_BOT;
-//        int topIdx = convert2Dto1D(row - 1, col);
-//        int botIdx = convert2Dto1D(row + 1, col);
-//        int leftIdx = convert2Dto1D(row, col - 1);
-//        int rightIdx = convert2Dto1D(row, col + 1);
-//        // check top site
-//        if (isValid(row - 1, col) && open[topIdx] == OPEN) {
-//            dfsFill(row - 1, col);
-//        }
-//        // check bottom site
-//        if (isValid(row + 1, col) && open[botIdx] == OPEN) {
-//            dfsFill(row + 1, col);
-//        }
-//        // check left site
-//        if (isValid(row, col - 1) && open[leftIdx] == OPEN) {
-//            dfsFill(row, col - 1);
-//        }
-//        // check right site
-//        if (isValid(row, col + 1) && open[rightIdx] == OPEN) {
-//            dfsFill(row, col + 1);
-//        }
-//    }
-
-    // it looks likes for this assignment, LinkedList and Queue are not allowed to use
-//    private void bfsFill(int row, int col) {
-//        Queue<Integer> x = new Queue<>();
-//        Queue<Integer> y = new Queue<>();
-//        x.enqueue(row);
-//        y.enqueue(col);
-//        // check all adjacent sites that are open but not connnected to bottom yet
-//        while (!x.isEmpty()) {
-//            int currx = x.dequeue();
-//            int curry = y.dequeue();
-//            int currIdx = convert2Dto1D(currx, curry);
-//            // mark the current index as connected to the bottom
-//            open[currIdx] = CONNECT_TO_BOT;
-//            int topIdx = convert2Dto1D(currx - 1, curry);
-//            int botIdx = convert2Dto1D(currx + 1, curry);
-//            int leftIdx = convert2Dto1D(currx, curry - 1);
-//            int rightIdx = convert2Dto1D(currx, curry + 1);
-//            // check top site
-//            if (currx >= 2 && currx <= numOfRows && open[topIdx] == OPEN) {
-//                x.enqueue(currx - 1);
-//                y.enqueue(curry);
-//            }
-//            // check left site
-//            if (curry >= 2 && curry <= numOfRows && open[leftIdx] == OPEN) {
-//                x.enqueue(currx);
-//                y.enqueue(curry - 1);
-//            }
-//            // check right site
-//            if (curry < numOfRows && curry >= 1 && open[rightIdx] == OPEN) {
-//                x.enqueue(currx);
-//                y.enqueue(curry + 1);
-//            }
-//            // check bot site
-//            if (currx >= 1 && currx < numOfRows && open[botIdx] == OPEN) {
-//                x.enqueue(currx + 1);
-//                y.enqueue(curry);
-//            }
-//        }
-//    }
-
-//    private void connect(int row, int col) {
-//        int currIdx = convert2Dto1D(row, col);
-//        int topIdx = convert2Dto1D(row - 1, col);
-//        int botIdx = convert2Dto1D(row + 1, col);
-//        int leftIdx = convert2Dto1D(row, col - 1);
-//        int rightIdx = convert2Dto1D(row, col + 1);
-//        boolean connectToBot = false;
-//        // check top site
-//        if (row >= 2 && row <= numOfRows && open[topIdx] != CLOSE) {
-//            uf.union(currIdx, topIdx);
-//            connectToBot |= open[topIdx] == CONNECT_TO_BOT;
-//        }
-//        // check left site
-//        if (col >= 2 && col <= numOfRows && open[leftIdx] != CLOSE) {
-//            uf.union(currIdx, leftIdx);
-//            connectToBot |= open[leftIdx] == CONNECT_TO_BOT;
-//        }
-//        // check right site
-//        if (col >= 1 && col < numOfRows && open[rightIdx] != CLOSE) {
-//            uf.union(currIdx, rightIdx);
-//            connectToBot |= open[rightIdx] == CONNECT_TO_BOT;
-//        }
-//        // check bottom site
-//        if (row >= 1 && row < numOfRows && open[botIdx] != CLOSE) {
-//            uf.union(currIdx, botIdx);
-//            connectToBot |= open[botIdx] == CONNECT_TO_BOT;
-//        }
-//        // see if we need to mark all adjacent sites to current site as connected to bottom
-//        if (connectToBot) {
-//            dfsFill(row, col);
-//        }
-//    }
-
     private void connect(int row, int col) {
         int currIdx = convert2Dto1D(row, col);
         // top, bottom, left, right
@@ -232,17 +133,6 @@ public class Percolation {
         }
         // connect adjacent open sites
         connect(row, col);
-//        // in case the site is on the bottom border, setting its open to reflect that
-//        if (row == numOfRows) {
-//            // recursively fill all sites that are opened and adjacent to it as "CONNECT_TO_BOT"
-//            dfsFill(row, col);
-//        }
-//        // connect with adjacent sites
-//        connect(row, col);
-//        // check if current site is both connected with bottom and top
-//        if (open[curr1DIdx] == CONNECT_TO_BOT && uf.connected(curr1DIdx, numOfRows * numOfRows)) {
-//            percolated = true;
-//        }
     }
 
     /**
