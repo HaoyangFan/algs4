@@ -1,4 +1,4 @@
-package week2;
+package week2; // DON'T FORGET TO REMOVE IT FOR SUBMISSION!
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

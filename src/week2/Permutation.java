@@ -1,4 +1,4 @@
-package week2;
+package week2; // DON'T FORGET TO REMOVE IT FOR SUBMISSION!
 
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;

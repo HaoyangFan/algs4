@@ -1,5 +1,4 @@
-// TODO: remove the package statement before you submit the assignment
-package week1;
+package week1; // DON'T FORGET TO REMOVE IT FOR SUBMISSION!
 
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdStats;
